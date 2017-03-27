@@ -9,10 +9,9 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
+/tmp/*
 !/log/.keep
-/tmp
-/db/*.sqlite3
-/db/*.sqlite3-journal
-/spec/tmp
-/.bundle
-/vendor/bundle
+!/tmp/.keep
+
+# Ignore Byebug command history file.
+.byebug_history

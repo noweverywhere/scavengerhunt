@@ -1,4 +1,4 @@
-# PostgreSQL. Versions 8.2 and up are supported.
+# PostgreSQL. Versions 9.1 and up are supported.
 #
 # Install the pg driver:
 #   gem install pg
@@ -14,22 +14,24 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
-default: &default
+development: &default
   adapter: postgresql
   encoding: unicode
-  # For details on connection pooling, see rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  database: scavenger_hunt_development
   pool: 5
+  username: postgres
+  password:
+  host: db
 
-development:
+test:
   <<: *default
-  database: scavengerhunt_development
+  database: scavenger_hunt_test
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: scavengerhunt
+  #username: scavenger_hunt
 
   # The password associated with the postgres role (username).
   #password:
@@ -44,7 +46,7 @@ development:
   #port: 5432
 
   # Schema search path. The server defaults to $user,public
-  #schema_search_path: myapp,sharedapp,public
+  #schema_search_path: scavenger_hunt,sharedapp,public
 
   # Minimum log levels, in increasing order:
   #   debug5, debug4, debug3, debug2, debug1,
@@ -57,7 +59,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: scavengerhunt_test
+  database: scavenger_hunt_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +82,6 @@ test:
 #
 production:
   <<: *default
-  database: scavengerhunt_production
-  username: scavengerhunt
-  password: <%= ENV['SCAVENGERHUNT_DATABASE_PASSWORD'] %>
+  database: scavenger_hunt_production
+  username: scavenger_hunt
+  password: <%= ENV['SCAVENGER_HUNT_DATABASE_PASSWORD'] %>
